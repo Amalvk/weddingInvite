@@ -4,6 +4,10 @@ import { useSpring, animated } from "react-spring";
 import React, { useState } from "react";
 
 function Test2(props) {
+
+  const {wish} =props
+  console.log(wish);
+  
   const [show, setShown] = useState(false);
   let img = false;
   const props3 = useSpring({
@@ -40,7 +44,7 @@ function Test2(props) {
               }}
               src={img ? "https://picsum.photos/seed/picsum/200/300" : null}
             >
-              {props.avatar}
+              {wish.avatar}
             </Avatar>
 
             {/* <img
@@ -50,8 +54,9 @@ function Test2(props) {
             /> */}
           </div>
           <div className="pic1">
-            <div className="title">{props.name}</div>
-            <div className="wishes">{props.message}</div>
+            <div className="title">{wish.name}</div>
+            <div className="wishes">{wish.wish}</div>
+             <div className="wishes" >{new Date(wish.time).toDateString()}</div> 
           </div>
           {/* <div className="name">
               <span>Victor Crest</span> 26

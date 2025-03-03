@@ -1,52 +1,50 @@
 import Carousel from "react-spring-3d-carousel";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { config } from "react-spring";
 import Modal from "./Modal";
 import Test2 from "./Test2";
 import { v4 as uuidv4 } from "uuid";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
+import { database } from "../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function Carousels() {
+  const [goToSlide, setGoToSlide] = useState(null);
+  const [isSliding, setIsSliding] = useState(true);
+  const [text, setText] = useState([]);
   let wishes = [
     { name: "Amal", avatar: "A", wish: "good morning", color: "red" },
     { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-    { name: "Navaneeth", avatar: "N", wish: "How are you", color: "cyan" },
-    { name: "Navaneeth", avatar: "N", wish: "How are you", color: "yellow" },
-    {
-      name: "Navaneeth",
-      avatar: "N",
-      wish: "How are you How are you How are you How are you How are you How are you How are you How are you How are you ",
-      color: "green",
-    },
+    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
+    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
+    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
+   
   ];
-  const [goToSlide, setGoToSlide] = useState(null);
-  const [isSliding, setIsSliding] = useState(true);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const wishesCollection = collection(database, "wishes");
+      const querySnapshot = await getDocs(wishesCollection);
+
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      setText(data); // ✅ Correct state update
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
+  
   useEffect(() => {
-    let interval;
-    if (isSliding === true) {
-      interval = setInterval(() => {
-        setGoToSlide((prevIndex) => (prevIndex + 1) % slides.length);
-      }, 2000);
-      return () => clearInterval(interval); // Cleanup the interval on unmount
-    }
-  }, [isSliding]);
+    fetchData();
+  }, []); // ✅ Fetch only on mount
 
-  const handleSlideClick = (slideNumber) => {
-    if (goToSlide == slideNumber) {
-      setIsSliding((prevstate) => !prevstate);
-    } else {
-      setIsSliding((prevstate) => !prevstate);
-      setGoToSlide(slideNumber);
-    }
-  };
-
-  const onMouseHover = (value) => {
-    setIsSliding(value);
-  };
-  const generateSlides = () => {
-    return wishes.map((item, index) => {
+  // ✅ Memoized `slides` to prevent unnecessary re-renders
+  const slides = useMemo(() => {
+    return text.map((item, index) => {
       const randomColor =
         "#" + Math.floor(Math.random() * 16777215).toString(16);
       return {
@@ -54,19 +52,35 @@ export default function Carousels() {
         content: (
           <div onClick={() => handleSlideClick(index)}>
             <Test2
-              name={item.name}
-              avatar={item.avatar}
-              message={item.wish}
-              color={item.color}
+            wish={item}
+              // name={item.name}
+              // avatar={item.avatar}
+              // message={item.wish}
+              // color={item.color}
+              
               randomColor={randomColor} // Pass the unique color to Test2
             />
           </div>
         ),
       };
     });
-  };
+  }, [text]);
 
-  const slides = generateSlides();
+  // ✅ Auto-Sliding (Only when `text` is available)
+  useEffect(() => {
+    if (!isSliding || slides.length === 0) return;
+
+    const interval = setInterval(() => {
+      setGoToSlide((prevIndex) => (prevIndex + 1) % slides.length);
+    }, 2000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [isSliding, slides.length]);
+
+  const handleSlideClick = (slideNumber) => {
+    setIsSliding((prevState) => !prevState);
+    setGoToSlide(slideNumber);
+  };
 
   return (
     <div>
@@ -95,20 +109,20 @@ export default function Carousels() {
               width: 26,
               height: 26,
               fontSize: "80%",
-              border: "1.5px solid var( --color-base)",
+              border: "1.5px solid var(--color-base)",
             },
             "& .MuiAvatar-colorDefault": {
               backgroundColor: "var(--color-cherry)",
-              color: "var( --color-base)",
+              color: "var(--color-base)",
             },
           }}
         >
-          {wishes.map((item) => {
-            return <Avatar alt={item.name} src="/static/images/avatar/1.jpg" />;
-          })}
+          {text.map((item) => (
+            <Avatar key={item.id} alt={item.name} src="/static/images/avatar/1.jpg" />
+          ))}
         </AvatarGroup>
         <div>
-          <Modal />
+          <Modal fetchData={fetchData} />
         </div>
       </div>
     </div>

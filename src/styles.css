@@ -76,9 +76,9 @@ body {
 /* Count Down */
 
 .countdown {
-        display: "flex",
-        justifyContent: "center",
-        paddingTop: "3rem",
+        display: "flex";
+        justify-content: "center";
+        padding-top: "3rem";
 }
 
 /* navbar */

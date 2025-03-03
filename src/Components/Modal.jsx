@@ -12,8 +12,13 @@ import {
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Cropper from "react-easy-crop";
 import TextField from "@mui/material/TextField";
+import { database } from "../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 
-export default function Modal() {
+export default function Modal({fetchData}) {
+
+  
   const [open, setOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
   const inpRef = useRef();
@@ -81,14 +86,40 @@ export default function Modal() {
   };
 
   const selectImage = () => {
-    // inpRef.current.click();
+    inpRef.current.click();
     setImageOpen(true);
   };
 
-  const handleSubmit = () => {
-    setOpen(false);
-    console.log("handleSubmited");
+  const handleSubmit = async () => {
+    const date = new Date();
+    // const formattedDate = date.toDateString().split(" ").slice(1).join(" ")
+    try {
+      if (name.trim() === "" || wish.trim() === "") {
+        alert("Please enter both Name and Wish!");
+        return;
+      }
+  
+      const wishesCollection = collection(database, "wishes");
+      await addDoc(wishesCollection, {
+        name: name, // Store name separately
+        wish: wish, // Store wish separately
+        avatar:name.charAt(0),
+      //  time: formattedDate,
+      });
+  
+      alert("Wish uploaded successfully!");
+  
+      // Clear input fields
+      setName("")
+      setWish("")
+      // fetchData
+    } catch (error) {
+      console.error("Error uploading wish:", error.message);
+    }
+    fetchData()
+    setOpen(false)
   };
+
   return (
     <React.Fragment>
       <Button
