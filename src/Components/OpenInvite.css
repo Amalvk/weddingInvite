@@ -1,0 +1,117 @@
+.inviteCard {
+  display: inline-block;
+  padding: 1rem;
+  /* place-items: center !important; */
+  align-content: center;
+  border-radius: 30px;
+  transition: 0.1s;
+  margin-top: 6rem;
+}
+
+.inviteTitle {
+  margin-block: 1rem;
+  font-family: "Sofia", cursive !important;
+}
+
+.image {
+  transition: box-shadow 0.6s;
+  border-radius: 10px;
+  width: 331px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* box-shadow: 20 20 21px rgba(159, 56, 56, 0.2); */
+}
+.image:hover {
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.2);
+  /* transform: translateY(0.2px); */
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+img {
+  width: 100%;
+  height: -webkit-fill-available;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+  /* padding: 6px; */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.content {
+  padding-bottom: 1rem;
+  width: 100%;
+  height: -webkit-fill-available;
+  top: 0rem;
+  left: 0;
+  padding-bottom: 0px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  transition: 0.8s;
+}
+
+.content:hover {
+  oppacity: 1;
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-radius: 10px;
+  color: white !important;
+  padding-bottom: 4rem;
+  gap: 1.5rem;
+}
+.pairName {
+  font-family: "RocknRoll One", sans-serif;
+  font-size: 13px;
+}
+
+.dateText {
+  font-size: 10px;
+  font-weight: 700;
+  color: transparent;
+}
+
+.content:hover .dateText {
+  transition: 0.8s;
+  color: white;
+}
+.countdown {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.buttonContainer {
+  padding-block: 2.5rem 2.5rem;
+  border-bottom: 2px solid; /* Set the thickness and solid style */
+  border-image: linear-gradient(
+      to right,
+      var(--color-base),
+      var(--color-warm),
+      var(--color-base)
+    )
+    1; /* Gradient from black to orange to black */
+  border-image-slice: 1;
+}
+
+.MuiButton-root.inviteButton {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  border: none;
+  transition: 0.8s;
+  line-height: 2;
+  letter-spacing: 3px;
+  padding-inline: 2rem;
+  border-radius: 15px;
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.1);
+}
+
+.MuiButton-root.inviteButton:hover {
+  transition: 0.8s;
+  color: var(color-primary);
+  box-shadow: 1px 10px 30px 1px var(--color-cherry);
+  border: none;
+  letter-spacing: 6px;
+}

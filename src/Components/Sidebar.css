@@ -1,0 +1,25 @@
+.sidebarHeadName {
+  margin: 1rem 0rem 1rem 1rem;
+  font-family: var(--font-family-Kurale) !important;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+  text-shadow: 2.5px 0px 2px rgba(128, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+
+  width: 30px;
+}
+.listItemIcon {
+  min-width: 33px !important;
+}
+
+.listItemText {
+}

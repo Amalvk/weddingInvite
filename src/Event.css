@@ -1,0 +1,14 @@
+.event-day {
+  /* color: var(color-primary); */
+}
+
+.event-text {
+  color: var(color-secondary);
+  font-family: "Playwrite GB S", var(--font-family-cursive);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.eventDescription {
+  color: var(--color-medium) !important;
+}

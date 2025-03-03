@@ -1,0 +1,66 @@
+
+
+.moving-container {
+    animation: moveUpDown 8s infinite;
+  }
+  
+  @keyframes moveUpDown {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .moving-DownUp {
+    animation: moveDownUp 8s infinite;
+  }
+  
+  @keyframes moveDownUp {
+    0% {
+      transform: translateY(15px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(15px);
+    }
+  }
+  
+  .wish-box {
+    gap: 2rem;
+    line-height: 1.5rem;
+    margin-block: 0.5rem;
+    text-align: left;
+  }
+  
+  .wish-content {
+    box-shadow: 1px 2px 8px 1px var(--wish-box-shadow);
+    border-radius: 0.6rem;
+    margin-inline: 0.5rem;
+    padding: 0.5rem;
+  }
+
+.wisher{
+  font-family: var(--font-family-system-ui);
+    font-size: .9rem;
+    color: var(--text-color-primary);
+
+}
+
+.wish-text{
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+    font-size: .8rem;
+    padding-left: 1.8rem;
+    color: var( --text-color-secondary);
+
+  }

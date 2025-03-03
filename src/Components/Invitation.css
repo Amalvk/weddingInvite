@@ -1,0 +1,50 @@
+/* Invitation card */
+
+.invitation-component {
+  padding: 2rem;
+}
+
+.invitation-card {
+  background: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-around;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.3);
+}
+
+.invite-head {
+  /* width: auto; */
+  /* background-color: rgb(252, 252, 248); */
+}
+
+.invite-body {
+  /* width: auto; */
+  /* background-color: rgb(239, 239, 238); */
+}
+.invite-head-image {
+  display: flex;
+  justify-content: center;
+}
+.invite-head-image-file {
+  width: 20rem;
+  height: 20rem;
+  background: rgb(72, 70, 72);
+}
+
+.family-details-head {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.family-details-groom {
+  text-align: right;
+}
+
+.family-details-bride {
+  text-align: left;
+}
+.displayBlock{
+  display: block;
+  text-align: center;
+}

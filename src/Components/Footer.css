@@ -1,0 +1,44 @@
+.footerContainer {
+  min-height: 8rem;
+
+  background: linear-gradient(
+    to top right,
+    var(--color-primary) 0%,
+    var(--color-secondary) 10%,
+    var(--color-cherry) 50%,
+    var(--color-light) 100%
+  );
+
+  margin-top: 2rem;
+}
+
+.footerContent {
+  padding-block: 1rem;
+  flex-direction: column;
+}
+.thankYou {
+  font-family: var(--font-family-Sofia);
+}
+
+.footerDescription {
+  max-width: 20rem;
+  margin: auto;
+  /* color: azure; */
+  /* font-family: var(--font-family-Sofia); */
+  font-family: var(--font-family-Kurale);
+  font-size: small;
+  margin-block: 0.5rem;
+}
+.footerName {
+  font-size: 11px;
+  margin-block: 0.2rem;
+  justify-content: center;
+  display: flex;
+  word-spacing: 0.3rem;
+  padding-inline: 11px;
+}
+.footerDivider {
+  border-color: var(--color-warm);
+  flex-grow: 1;
+  border-width: 0.1px;
+}

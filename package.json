@@ -1,0 +1,55 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.tsx",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-scripts": "^5.0.0",
+    "mui": "0.0.1",
+    "@mui/material": "5.16.6",
+    "@emotion/styled": "11.13.0",
+    "@emotion/react": "11.13.0",
+    "malayalam-fonts": "1.0.7",
+    "@mui/icons-material": "5.16.7",
+    "gsap": "3.12.5",
+    "google-map-react": "2.2.1",
+    "react-leaflet": "4.2.1",
+    "@react-leaflet/core": "2.1.0",
+    "leaflet": "1.9.4",
+    "react-scroll-to": "3.0.0-beta.6",
+    "react-scroll": "1.9.0",
+    "@mui/x-date-pickers": "7.21.0",
+    "@leenguyen/react-flip-clock-countdown": "1.6.0",
+    "@rumess/react-flip-countdown": "1.2.6",
+    "@abubseifu/react-flip-clock-countdown-forked": "1.3.2",
+    "react-flip-clock-countdown-forked": "1.3.3",
+    "react-canvas-confetti": "2.0.7",
+    "react-confetti-explosion": "2.1.2",
+    "react-spring-3d-carousel": "1.3.4",
+    "react-spring": "9.7.4",
+    "uuid": "11.0.2",
+    "react-image-crop": "11.0.7",
+    "react-easy-crop": "5.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.38",
+    "@types/react-dom": "18.2.15",
+    "loader-utils": "3.2.1",
+    "typescript": "4.4.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
