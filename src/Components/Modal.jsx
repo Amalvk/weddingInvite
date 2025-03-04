@@ -92,7 +92,7 @@ export default function Modal({fetchData}) {
 
   const handleSubmit = async () => {
     const date = new Date();
-    const formattedDate = date.toDateString().split(" ").slice(1).join(" ")
+    const formattedDate = date.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}).replace(/,/g,'')
     try {
       if (name.trim() === "" || wish.trim() === "") {
         alert("Please enter both Name and Wish!");
