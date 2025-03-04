@@ -21,9 +21,9 @@ function Test2(props) {
   const displayDate = (date) =>{
     const options = {year:'numeric',month:'short',day:'numeric'}
     const today = new Date().toLocaleDateString("en-US",options)
-    const wishDate = new Date(date).toLocaleDateString("en-US"options)
+    const wishDate = new Date(date).toLocaleDateString("en-US",options)
     
-    if today == wishDate return "Today"
+    if (today == wishDate) return "Today"
     else return wishDate
   }
   return (
