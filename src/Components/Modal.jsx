@@ -92,7 +92,7 @@ export default function Modal({fetchData}) {
 
   const handleSubmit = async () => {
     const date = new Date();
-    const formattedDate = date.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}).replace(/,/g,'')
+    // const formattedDate = date.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}).replace(/,/g,'')
     try {
       if (name.trim() === "" || wish.trim() === "") {
         alert("Please enter both Name and Wish!");
@@ -104,7 +104,7 @@ export default function Modal({fetchData}) {
         name: name, // Store name separately
         wish: wish, // Store wish separately
         avatar:name.charAt(0),
-        time: formattedDate,
+        time: new Date(),
       });
   
       alert("Wish uploaded successfully!");
