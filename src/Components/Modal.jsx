@@ -104,7 +104,7 @@ export default function Modal({fetchData}) {
         name: name, // Store name separately
         wish: wish, // Store wish separately
         avatar:name.charAt(0),
-      //  time: formattedDate,
+        time: formattedDate,
       });
   
       alert("Wish uploaded successfully!");
