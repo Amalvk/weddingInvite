@@ -65,7 +65,7 @@ function Test2(props) {
           <div className="pic1">
             <div className="title">{wish.name}</div>
             <div className="wishes">{wish.wish}</div>
-             <div className="wishes" >{displayDate(wish.time)}</div> 
+             <div className="wishdate" >{displayDate(wish.time)}</div> 
           </div>
           {/* <div className="name">
               <span>Victor Crest</span> 26
