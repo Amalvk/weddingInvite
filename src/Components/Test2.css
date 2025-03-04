@@ -85,6 +85,11 @@
   font-size: 0.8rem;
   color: var(--color-medium);
 }
+.wishdate{
+  position : absolute;
+  bottom : 0;
+  color:var(--text-color-light);
+}
 .profile-info {
   margin-top: 74px;
   display: flex;
