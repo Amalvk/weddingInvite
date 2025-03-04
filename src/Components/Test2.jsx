@@ -17,6 +17,15 @@ function Test2(props) {
       : "0 2px 10px rgb(0 0 0 / 8%)",
     borderRadius: "20px",
   });
+
+  const displayDate = (date) =>{
+    const options = {year:'numeric',month:'short',day:'numeric'}
+    const today = new Date().toLocaleDateString("en-US",options)
+    const wishDate = new Date(date).toLocaleDateString("en-US"options)
+    
+    if today == wishDate return "Today"
+    else return wishDate
+  }
   return (
     <animated.div
       className="container"
@@ -56,7 +65,7 @@ function Test2(props) {
           <div className="pic1">
             <div className="title">{wish.name}</div>
             <div className="wishes">{wish.wish}</div>
-             <div className="wishes" >{new Date(wish.time).toDateString()}</div> 
+             <div className="wishes" >{displayDate(wish.time)}</div> 
           </div>
           {/* <div className="name">
               <span>Victor Crest</span> 26
