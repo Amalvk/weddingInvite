@@ -64,7 +64,7 @@ export default function Carousels() {
         ),
       };
     });
-  }, [text]);
+  }, []);
 
   // ✅ Auto-Sliding (Only when `text` is available)
   useEffect(() => {
