@@ -88,7 +88,7 @@
 .wishdate{
   position : relative;
   bottom : 0;
-  color:var(--text-color-light);
+  color:var(--color-light);
 }
 .profile-info {
   margin-top: 74px;
