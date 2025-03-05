@@ -52,7 +52,7 @@ export default function Carousels() {
         content: (
           <div onClick={() => handleSlideClick(index)}>
             <Test2
-            wish={item}
+            wish={item ? item : wishes}
               // name={item.name}
               // avatar={item.avatar}
               // message={item.wish}
