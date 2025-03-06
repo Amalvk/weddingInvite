@@ -26,7 +26,7 @@ export default function CountDown() {
         dividerStyle={{ color: "pink", height: 1 }}
         separatorStyle={{ color: "red", size: "none" }}
         duration={0.5}
-      >Hello</FlipClockCountdown>
+      >Count Down</FlipClockCountdown>
     </div>
   );
 }
