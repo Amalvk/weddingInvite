@@ -3,7 +3,7 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 
 export default function CountDown() {
-  const targetDate = new Date("2025-01-22T14:00:00");
+  const targetDate = new Date("2026-01-22T14:00:00");
   return (
     <div>
       <FlipClockCountdown
