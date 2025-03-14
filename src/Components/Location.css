@@ -10,8 +10,42 @@
   box-shadow: 0px 10px 20px 5px rgba(0, 0, 0, 0.3);
   width: 75%;
   border-radius: 40px;
-  margin: 1rem auto;
+  margin: 2rem auto;
 }
+
+.moving-container {
+  animation: moveUpDown 8s infinite;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.moving-DownUp {
+  animation: moveDownUp 8s infinite;
+}
+
+@keyframes moveDownUp {
+  0% {
+    transform: translateY(15px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(15px);
+  }
+}
+
+
 .eventLocationText {
   color: var(--color-primary);
 }

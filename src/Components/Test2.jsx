@@ -1,15 +1,48 @@
 import "./Test2.css";
 import { Grid, Avatar, Box } from "@mui/material";
 import { useSpring, animated } from "react-spring";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { doc, updateDoc } from "firebase/firestore"; 
+import { database } from "../firebase/config";
+
 
 function Test2(props) {
-
-  const {wish} =props
-  console.log(wish);
+  const { wish } = props;
   
+  const [like, setLike] = useState(0);
+  const [liked, setLiked] = useState(false);
   const [show, setShown] = useState(false);
-  let img = false;
+  useEffect(() => {
+    setLike(wish.like);
+  }, []);
+
+
+  const addLike = async (id) => {
+    try {
+      setLiked((prevLiked) => {
+        const newLiked = !prevLiked;
+        
+        setLike((prevLike) => {
+          const updatedLike = newLiked ? prevLike + 1 : prevLike - 1;
+  
+          const wishRef = doc(database, "wishes", id);
+          updateDoc(wishRef, { like: updatedLike });
+  
+          return updatedLike; // Ensure state updates correctly
+        });
+  
+        return newLiked;
+      });
+  
+      console.log("Wish updated successfully!");
+    } catch (error) {
+      console.error("Error updating wish:", error.message);
+    }
+  };
+
+  
   const props3 = useSpring({
     transform: show ? "scale(1.03)" : "scale(1)",
     boxShadow: show
@@ -18,14 +51,14 @@ function Test2(props) {
     borderRadius: "20px",
   });
 
-  const displayDate = (date) =>{
-    const options = {year:'numeric',month:'short',day:'numeric'}
-    const today = new Date().toLocaleDateString("en-US",options)
+  const displayDate = (date) => {
+    const options = { year: "numeric", month: "short", day: "numeric" };
+    const today = new Date().toLocaleDateString("en-US", options);
     //const wishDate = new Date(date).toLocaleDateString("en-US",options)
-    
-    if (today == date) return "Today"
-    else return date
-  }
+
+    if (today == date) return "Today";
+    else return date;
+  };
   return (
     <animated.div
       className="container"
@@ -51,7 +84,7 @@ function Test2(props) {
                 background: "var(--color-light)",
                 alignSelf: "center",
               }}
-              src={img ? "https://picsum.photos/seed/picsum/200/300" : null}
+              src={wish.image ? wish.image : null}
             >
               {wish.avatar}
             </Avatar>
@@ -65,7 +98,13 @@ function Test2(props) {
           <div className="pic1">
             <div className="title">{wish.name}</div>
             <div className="wishes">{wish.wish}</div>
-             <div className="wishdate" >{displayDate(wish.time)}</div> 
+            <div className="wishdetails">
+              <div className="likedetails alignCenter">
+                <div onClick={()=>{addLike(wish.id)}} className='alignCenter' > { liked ? <FavoriteIcon sx={{ fontSize: "12px" }}/>  : <FavoriteBorderIcon sx={{ fontSize: "12px" }}  /> }</div>
+                <div>{like}</div>
+              </div>
+              <div>{displayDate(wish.time)}</div>
+            </div>
           </div>
           {/* <div className="name">
               <span>Victor Crest</span> 26

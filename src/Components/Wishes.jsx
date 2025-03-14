@@ -22,16 +22,13 @@ export default function Wishes() {
           "#" + Math.floor(Math.random() * 16777215).toString(16);
         return (
           <Grid
-            spacing={10}
+            item
             xs={12}
             sm={6}
             md={3}
             lg={3}
             xl={3}
-            className={[
-              index % 2 == 0 ? "moving-container" : "moving-DownUp",
-              "wish-box",
-            ]}
+            className={index % 2 === 0 ? "moving-container wish-box" : "moving-DownUp wish-box"}
           >
             <div className="wish-content">
               <div style={{ display: "flex", gap: ".5rem" }}>

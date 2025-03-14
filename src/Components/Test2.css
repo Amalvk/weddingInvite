@@ -64,9 +64,11 @@
   justify-content: center;
 }
 
-.profile .pic1 {
+.profile {
   margin-left: 6rem;
   margin-top: 14px;
+}
+.pic1 {
   position: absolute;
 }
 
@@ -85,11 +87,17 @@
   font-size: 0.8rem;
   color: var(--color-medium);
 }
-.wishdate{
-  position : relative;
-  bottom : 0;
+.wishdetails{
+  display : flex;
+  margin-top: .4rem;
   color:var(--color-light);
   font-size: 0.65rem;
+  gap: .5rem;
+}
+.likedetails{
+ font-size: 90%;
+ gap: 2px;
+ min-width: 40px; 
 }
 .profile-info {
   margin-top: 74px;

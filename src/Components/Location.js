@@ -41,7 +41,7 @@ export default function RedirectMap() {
 
       {eventDetails.map((place, index) => {
         return (
-          <div className="locationCard">
+          <div key={index} className={index % 2 === 0 ? "moving-container locationCard" : "moving-DownUp locationCard"}>
             <div className="eventLocationText">
               {place.type} <LocationOnIcon sx={{ fontSize: "medium" }} />{" "}
             </div>

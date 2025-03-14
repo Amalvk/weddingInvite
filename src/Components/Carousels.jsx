@@ -19,9 +19,9 @@ export default function Carousels() {
     { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
     { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
     { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-   
+  
   ];
-
+  
   const fetchData = async () => {
     try {
       const wishesCollection = collection(database, "wishes");
@@ -72,7 +72,7 @@ export default function Carousels() {
 
     const interval = setInterval(() => {
       setGoToSlide((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [isSliding, slides.length]);

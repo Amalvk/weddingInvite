@@ -63,6 +63,11 @@ body {
   text-align: center;
 }
 
+.alignCenter{
+  align-self: center;
+  display: flex
+}
+
 .dotted-line {
   height: 1px;
   background: linear-gradient(

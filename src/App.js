@@ -75,10 +75,10 @@ export default function App() {
             <Invitation />
           </div>
 
-          <div id="wishes">
+          {/* <div id="wishes">
             <Wishes />
           </div>
-
+          */}
           <div id="location">
             <Location />
           </div>
