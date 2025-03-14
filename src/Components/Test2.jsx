@@ -4,13 +4,13 @@ import { useSpring, animated } from "react-spring";
 import React, { useEffect, useState } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { doc, updateDoc } from "firebase/firestore"; 
+import { doc, updateDoc } from "firebase/firestore";
 import { database } from "../firebase/config";
 
 
 function Test2(props) {
   const { wish } = props;
-  
+
   const [like, setLike] = useState(0);
   const [liked, setLiked] = useState(false);
   const [show, setShown] = useState(false);
@@ -19,30 +19,31 @@ function Test2(props) {
   }, []);
 
 
-  const addLike = async (id) => {
+  const addLike = async (e,id) => {
+    e.stopPropagation()
     try {
       setLiked((prevLiked) => {
         const newLiked = !prevLiked;
-        
+
         setLike((prevLike) => {
           const updatedLike = newLiked ? prevLike + 1 : prevLike - 1;
-  
+
           const wishRef = doc(database, "wishes", id);
           updateDoc(wishRef, { like: updatedLike });
-  
+
           return updatedLike; // Ensure state updates correctly
         });
-  
+
         return newLiked;
       });
-  
+
       console.log("Wish updated successfully!");
     } catch (error) {
       console.error("Error updating wish:", error.message);
     }
   };
 
-  
+
   const props3 = useSpring({
     transform: show ? "scale(1.03)" : "scale(1)",
     boxShadow: show
@@ -66,7 +67,7 @@ function Test2(props) {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-      <div className="card">
+      <div className="card" style={{background:'red'}}>
         <div
           className="bg-img"
           style={{ background: "var(--color-warm)" }}
@@ -100,7 +101,7 @@ function Test2(props) {
             <div className="wishes">{wish.wish}</div>
             <div className="wishdetails">
               <div className="likedetails alignCenter">
-                <div onClick={()=>{addLike(wish.id)}} className='alignCenter' > { liked ? <FavoriteIcon sx={{ fontSize: "12px" }}/>  : <FavoriteBorderIcon sx={{ fontSize: "12px" }}  /> }</div>
+                <div onClick={(e) => { addLike(e,wish.id) }} className='alignCenter' > {liked ? <FavoriteIcon sx={{ fontSize: "12px" }} /> : <FavoriteBorderIcon sx={{ fontSize: "12px" }} />}</div>
                 <div>{like}</div>
               </div>
               <div>{displayDate(wish.time)}</div>

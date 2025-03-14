@@ -34,7 +34,7 @@ export default function Sidebar() {
     {
       text: "Wishes",
       icon: <CardGiftcardIcon fontSize="small" />,
-      scrollTo: "wishes",
+      scrollTo: "carousels",
     },
     {
       text: "Location",
@@ -47,13 +47,13 @@ export default function Sidebar() {
     <nav>
       <div className="nav-logo-container">Image</div>
       <div className="navbar-links-container">
-        <Link to="invitation" smooth={true}>
+        <Link to="events" smooth={true}>
           Events
         </Link>
         <Link to="invitation" smooth={true}>
           Invitation
         </Link>
-        <Link to="invitation" smooth={true}>
+        <Link to="carousels" smooth={true}>
           Wishes
         </Link>
         <Link to="location" smooth={true}>

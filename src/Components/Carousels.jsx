@@ -13,15 +13,6 @@ export default function Carousels() {
   const [goToSlide, setGoToSlide] = useState(null);
   const [isSliding, setIsSliding] = useState(true);
   const [text, setText] = useState([]);
-  let wishes = [
-    { name: "Amal", avatar: "A", wish: "good morning", color: "red" },
-    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-    { name: "Karun", avatar: "K", wish: "have a good day", color: "orange" },
-  
-  ];
-  
   const fetchData = async () => {
     try {
       const wishesCollection = collection(database, "wishes");
@@ -72,7 +63,7 @@ export default function Carousels() {
 
     const interval = setInterval(() => {
       setGoToSlide((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 5000);
+    }, 2000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [isSliding, slides.length]);

@@ -64,7 +64,7 @@ export default function App() {
             />
           </div>
 
-          <div className="">
+          <div id="carousels">
             <Carousels />
           </div>
           <div id="events">

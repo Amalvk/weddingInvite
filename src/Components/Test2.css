@@ -89,7 +89,7 @@
 }
 .wishdetails{
   display : flex;
-  margin-top: .4rem;
+  margin-top: .6rem;
   color:var(--color-light);
   font-size: 0.65rem;
   gap: .5rem;
