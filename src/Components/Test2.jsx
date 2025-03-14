@@ -67,7 +67,7 @@ function Test2(props) {
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
     >
-      <div className="card" style={{background:'red'}}>
+      <div className="card">
         <div
           className="bg-img"
           style={{ background: "var(--color-warm)" }}
