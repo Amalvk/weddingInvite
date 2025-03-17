@@ -4,8 +4,8 @@ import { useSpring, animated } from "react-spring";
 import React, { useEffect, useState } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { doc, updateDoc } from "firebase/firestore";
-import { database } from "../firebase/config";
+import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
+import { updateDocument } from "../firebase/firebaseService";
 
 
 function Test2(props) {
@@ -19,29 +19,29 @@ function Test2(props) {
   }, []);
 
 
-  const addLike = async (e,id) => {
-    e.stopPropagation()
+  const addLike = async (e, id) => {
+    e.stopPropagation();
     try {
       setLiked((prevLiked) => {
         const newLiked = !prevLiked;
-
+  
         setLike((prevLike) => {
           const updatedLike = newLiked ? prevLike + 1 : prevLike - 1;
-
-          const wishRef = doc(database, "wishes", id);
-          updateDoc(wishRef, { like: updatedLike });
-
-          return updatedLike; // Ensure state updates correctly
+  
+          updateDocument(FIREBASE_COLLECTIONS.WISHES, id, { like: updatedLike });
+  
+          return updatedLike; 
         });
-
+  
         return newLiked;
       });
-
+  
       console.log("Wish updated successfully!");
     } catch (error) {
       console.error("Error updating wish:", error.message);
     }
   };
+  
 
 
   const props3 = useSpring({

@@ -9,7 +9,7 @@ import Wishes from "./Components/Wishes";
 import Sidebar from "./Components/Sidebar";
 import Carousels from "./Components/Carousels";
 import Popper from "./Components/Popper";
-import Event from "./Event";
+import Event from "./Components/Event";
 import Footer from "./Components/Footer";
 
 // import Navbar from "./Components/Navbar";

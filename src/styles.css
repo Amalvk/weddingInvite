@@ -42,6 +42,7 @@ body {
     var(--background-primary)
   ); */
   background-color: var(--color-base);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App {

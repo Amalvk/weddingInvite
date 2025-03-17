@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Modal.css";
 import {
   Button,
@@ -12,10 +12,10 @@ import {
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Cropper from "react-easy-crop";
 import TextField from "@mui/material/TextField";
-import { database } from "../firebase/config"; // ✅ Removed imgDb (Storage not needed)
-import { collection, addDoc } from "firebase/firestore";
+import {addDocument } from "../firebase/firebaseService";
+import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
 
-export default function Modal({ fetchData }) {
+export default function Modal({ loadData }) {
   const [open, setOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
   const inpRef = useRef();
@@ -27,6 +27,7 @@ export default function Modal({ fetchData }) {
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
+
 
   const handleCropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -99,23 +100,22 @@ export default function Modal({ fetchData }) {
     setUploading(true);
     const date = new Date();
     const formattedDate = date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+    const newWish = {
+      name,
+      wish,
+      avatar: name.charAt(0),
+      time: formattedDate,
+      image: croppedImage || "", // ✅ Store Base64 image
+      like: 1,
+    };
 
     try {
-      const wishesCollection = collection(database, "wishes");
-      await addDoc(wishesCollection, {
-        name: name,
-        wish: wish,
-        avatar: name.charAt(0),
-        time: formattedDate,
-        image: croppedImage || "", // ✅ Store Base64 image
-        like: 1,
-      });
-
-      alert("Wish uploaded successfully!");
+      await addDocument(FIREBASE_COLLECTIONS.WISHES, newWish);
       setName("");
       setWish("");
       setCroppedImage(null);
-      fetchData();
+      loadData();
+      alert("Wish uploaded successfully!");
       setOpen(false);
     } catch (error) {
       console.error("Error uploading wish:", error.message);
@@ -127,175 +127,175 @@ export default function Modal({ fetchData }) {
 
   return (
     <React.Fragment>
-    <Button
-      variant="outlined"
-      onClick={handleClickOpen}
-      className="modalButton"
-    >
-      Add wishes{" "}
-      <AddCircleOutlineRoundedIcon
-        sx={{ fontSize: "medium", marginLeft: "-4px" }}
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+        className="modalButton"
+      >
+        Add wishes{" "}
+        <AddCircleOutlineRoundedIcon
+          sx={{ fontSize: "medium", marginLeft: "-4px" }}
+        />
+      </Button>
+      <input
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+        style={{ marginTop: "10px", display: "none" }}
+        ref={inpRef}
       />
-    </Button>
-    <input
-      type="file"
-      accept="image/*"
-      onChange={handleImageUpload}
-      style={{ marginTop: "10px", display: "none" }}
-      ref={inpRef}
-    />
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-      // className="modalContainer"
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+        // className="modalContainer"
 
-      sx={{
-        "& .MuiBackdrop-root": {
-          backdropFilter: "blur(5px)", // Blurring effect
-        },
-        "& .MuiPaper-root": {
-          borderRadius: "40px", // Custom border-radius
-          overflow: "hidden",
-        },
-      }}
-    >
-      <DialogTitle id="alert-dialog-title">
-        {"Add your wishes here !!"}
-      </DialogTitle>
-      <DialogContent dividers sx={{ overflow: "hidden" }}>
-        {/* <div>
+        sx={{
+          "& .MuiBackdrop-root": {
+            backdropFilter: "blur(5px)", // Blurring effect
+          },
+          "& .MuiPaper-root": {
+            borderRadius: "40px", // Custom border-radius
+            overflow: "hidden",
+          },
+        }}
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Add your wishes here !!"}
+        </DialogTitle>
+        <DialogContent dividers sx={{ overflow: "hidden" }}>
+          {/* <div>
           <Button autoFocus>Select profile</Button>
         </div> */}
-        <DialogContentText id="alert-dialog-description">
-          <Box
-            sx={{
-              display: "block",
-              lineHeight: "4rem",
-              "& .MuiInput-underline": {
-                // borderBottom: "2px solid red", // Set the underline border color to red
-              },
-              "& .MuiInput-underline": {
-                // borderBottom: "2px solid red", // Keep the underline red on hover
-                color: "var(--text-color-primary)", // Set the text color to blue
-              },
-              "& .MuiInput-underline:after": {
-                borderBottom: "2px solid var(--text-color-primary)", // Keep the underline red when focused
-                // color: "var(--text-color-primary)", // Set the text color to blue
-              },
-              "& .MuiInputBase-input": {
-                color: "var(--text-color-primary)", // Set the text color to blue
-              },
-              "& .MuiInputLabel-root": {
-                color: "var(--text-color-secondary)",
-                // color: "#675959", // Set label color to yellow
-              },
-              "& .Mui-focused": {
-                color: "var(--text-color-secondary)",
-              },
-            }}
-          >
-            <TextField
-              id="standard-basic"
-              size="small"
-              label="Name"
-              variant="standard"
-              fullWidth
-              onChange={(e) => {
-                setName(e.target.value);
+          <DialogContentText id="alert-dialog-description">
+            <Box
+              sx={{
+                display: "block",
+                lineHeight: "4rem",
+                "& .MuiInput-underline": {
+                  // borderBottom: "2px solid red", // Set the underline border color to red
+                },
+                "& .MuiInput-underline": {
+                  // borderBottom: "2px solid red", // Keep the underline red on hover
+                  color: "var(--text-color-primary)", // Set the text color to blue
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottom: "2px solid var(--text-color-primary)", // Keep the underline red when focused
+                  // color: "var(--text-color-primary)", // Set the text color to blue
+                },
+                "& .MuiInputBase-input": {
+                  color: "var(--text-color-primary)", // Set the text color to blue
+                },
+                "& .MuiInputLabel-root": {
+                  color: "var(--text-color-secondary)",
+                  // color: "#675959", // Set label color to yellow
+                },
+                "& .Mui-focused": {
+                  color: "var(--text-color-secondary)",
+                },
               }}
-            />
+            >
+              <TextField
+                id="standard-basic"
+                size="small"
+                label="Name"
+                variant="standard"
+                fullWidth
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
 
-            <TextField
-              id="standard-basic"
-              size="small"
-              label="Wish"
-              variant="standard"
+              <TextField
+                id="standard-basic"
+                size="small"
+                label="Wish"
+                variant="standard"
+                fullWidth
+                onChange={(e) => {
+                  setWish(e.target.value);
+                }}
+              />
+            </Box>
+          </DialogContentText>
+          <DialogActions></DialogActions>
+          <div className="displayBlock">
+            <Button onClick={selectImage} className="modalButton">
+              Upload Image
+            </Button>
+            <Dialog
+              open={imageOpen}
+              onClose={() => setOpen(false)}
+              maxWidth="sm"
               fullWidth
-              onChange={(e) => {
-                setWish(e.target.value);
-              }}
-            />
-          </Box>
-        </DialogContentText>
-        <DialogActions></DialogActions>
-        <div className="displayBlock">
-          <Button onClick={selectImage} className="modalButton">
-            Upload Image
-          </Button>
-          <Dialog
-            open={imageOpen}
-            onClose={() => setOpen(false)}
-            maxWidth="sm"
-            fullWidth
-            sx={{ backgroundColor: "var(--background-secondary)" }}
-          >
-            <DialogContent>
-              {image && (
-                <div style={{ position: "relative", height: "300px" }}>
-                  <Cropper
-                    image={image}
-                    crop={crop}
-                    zoom={zoom}
-                    aspect={1} // Maintains 1:1 aspect ratio
-                    onCropChange={setCrop}
-                    onCropComplete={handleCropComplete}
-                    onZoomChange={setZoom} // Allows zoom adjustments dynamically
+              sx={{ backgroundColor: "var(--background-secondary)" }}
+            >
+              <DialogContent>
+                {image && (
+                  <div style={{ position: "relative", height: "300px" }}>
+                    <Cropper
+                      image={image}
+                      crop={crop}
+                      zoom={zoom}
+                      aspect={1} // Maintains 1:1 aspect ratio
+                      onCropChange={setCrop}
+                      onCropComplete={handleCropComplete}
+                      onZoomChange={setZoom} // Allows zoom adjustments dynamically
+                    />
+                  </div>
+                )}
+              </DialogContent>
+              <DialogActions>
+                <Box className="cropBoxContainer">
+                  <Button
+                    size="small"
+                    onClick={() => setImageOpen(false)}
+                    // variant="outlined"
+                    // style={{ borderRadius: "10px 10px 10px 10px" }}
+                    className="actionButton"
+                  >
+                    Cancel
+                  </Button>
+                  {image && (
+                    <Button
+                      size="small"
+                      onClick={getCroppedImage}
+                      // variant="outlined"
+                      className="actionButton"
+                    >
+                      Crop
+                    </Button>
+                  )}
+                </Box>
+              </DialogActions>
+            </Dialog>
+            <div style={{ paddingTop: ".4rem" }}>
+              {croppedImage && (
+                <div>
+                  {/* <h5>Cropped Image</h5> */}
+                  <img
+                    src={croppedImage}
+                    alt="Cropped"
+                    style={{ width: "90px" }}
                   />
                 </div>
               )}
-            </DialogContent>
-            <DialogActions>
-              <Box className="cropBoxContainer">
-                <Button
-                  size="small"
-                  onClick={() => setImageOpen(false)}
-                  // variant="outlined"
-                  // style={{ borderRadius: "10px 10px 10px 10px" }}
-                  className="actionButton"
-                >
-                  Cancel
-                </Button>
-                {image && (
-                  <Button
-                    size="small"
-                    onClick={getCroppedImage}
-                    // variant="outlined"
-                    className="actionButton"
-                  >
-                    Crop
-                  </Button>
-                )}
-              </Box>
-            </DialogActions>
-          </Dialog>
-          <div style={{ paddingTop: ".4rem" }}>
-            {croppedImage && (
-              <div>
-                {/* <h5>Cropped Image</h5> */}
-                <img
-                  src={croppedImage}
-                  alt="Cropped"
-                  style={{ width: "90px" }}
-                />
-              </div>
-            )}
+            </div>
           </div>
-        </div>
-      </DialogContent>
+        </DialogContent>
 
-      <DialogActions className="justifyCenter">
-        <Button
-          size="small"
-          onClick={handleSubmit}
-          variant="outlined"
-          className="actionButton"
-        >
-          Submit
-        </Button>
-      </DialogActions>
-    </Dialog>
-  </React.Fragment>
+        <DialogActions className="justifyCenter">
+          <Button
+            size="small"
+            onClick={handleSubmit}
+            variant="outlined"
+            className="actionButton"
+          >
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
   );
 }

@@ -6,32 +6,22 @@ import Test2 from "./Test2";
 import { v4 as uuidv4 } from "uuid";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
-import { database } from "../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
+import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
+import { fetchData } from "../firebase/firebaseService";
 
 export default function Carousels() {
   const [goToSlide, setGoToSlide] = useState(null);
   const [isSliding, setIsSliding] = useState(true);
   const [text, setText] = useState([]);
-  const fetchData = async () => {
-    try {
-      const wishesCollection = collection(database, "wishes");
-      const querySnapshot = await getDocs(wishesCollection);
 
-      const data = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setText(data); // ✅ Correct state update
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-    }
+  const loadData = async () => {
+    fetchData(FIREBASE_COLLECTIONS.WISHES).then(setText).catch(console.error);
   };
-  
+
   useEffect(() => {
-    fetchData();
-  }, []); // ✅ Fetch only on mount
+    loadData();
+  }, []);
+
 
   // ✅ Memoized `slides` to prevent unnecessary re-renders
   const slides = useMemo(() => {
@@ -43,7 +33,7 @@ export default function Carousels() {
         content: (
           <div onClick={() => handleSlideClick(index)}>
             <Test2
-            wish={item }
+              wish={item }
               // name={item.name}
               // avatar={item.avatar}
               // message={item.wish}
@@ -113,7 +103,7 @@ export default function Carousels() {
           ))}
         </AvatarGroup>
         <div>
-          <Modal fetchData={fetchData} />
+          <Modal loadData={loadData} />
         </div>
       </div>
     </div>
