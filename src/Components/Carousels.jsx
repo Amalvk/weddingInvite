@@ -53,7 +53,7 @@ export default function Carousels() {
 
     const interval = setInterval(() => {
       setGoToSlide((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, [isSliding, slides.length]);
