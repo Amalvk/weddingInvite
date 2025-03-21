@@ -18,7 +18,6 @@ import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
 export default function Modal({ loadData }) {
   const [open, setOpen] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
-  const inpRef = useRef();
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [wish, setWish] = useState("");
@@ -27,6 +26,13 @@ export default function Modal({ loadData }) {
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
+    
+  const inpRef = useRef();
+  const inputRef = useRef();
+
+  useEffect(()=>{
+    inputRef?.current?.focus()
+  },[])
 
 
   const handleCropComplete = (croppedArea, croppedAreaPixels) => {
@@ -197,6 +203,7 @@ export default function Modal({ loadData }) {
               }}
             >
               <TextField
+                inputRef={inputRef}
                 id="standard-basic"
                 size="small"
                 label="Name"
