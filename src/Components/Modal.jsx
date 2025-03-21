@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Modal.css";
 import {
   Button,
@@ -29,11 +29,6 @@ export default function Modal({ loadData }) {
     
   const inpRef = useRef();
   const inputRef = useRef();
-
-  useEffect(()=>{
-    inputRef?.current?.focus()
-  },[])
-
 
   const handleCropComplete = (croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -86,6 +81,7 @@ export default function Modal({ loadData }) {
 
   const handleClickOpen = () => {
     setOpen(true);
+    inputRef?.current?.focus()
   };
 
   const handleClose = () => {
