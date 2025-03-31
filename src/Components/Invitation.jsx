@@ -1,21 +1,21 @@
 import "./Invitation.css";
-import { Grid, Divider, Typography } from "@mui/material";
-
+import { Grid, Divider, div, Typography } from "@mui/material";
+import Ghibili from '../Assets/ghibiliAA.jpg'
 export default function Invitation() {
   return (
     <div className="invitation-component">
       <Grid container className="invitation-card">
         <Grid item xs={12} sm={12} md={6} lg={6} xl={6} className="invite-head">
           <div className="invite-head-image">
-            <div className="invite-head-image-file">Image</div>
+            <img className="invite-couple-image" src={Ghibili} />
           </div>
           <div className="justifyCenter">
-            <Typography>GN</Typography>
-            <Typography>BN</Typography>
+            <div>GN</div>
+            <div>BN</div>
           </div>
           <div>
             <Divider variant="middle">
-              <Typography>Week</Typography>
+              <div>Week</div>
             </Divider>
             <div>
               <div
@@ -27,12 +27,12 @@ export default function Invitation() {
                 }}
               >
                 {" "}
-                <Typography>Month </Typography>
-                <Typography>Day </Typography> <Typography> Year </Typography>{" "}
+                <div>Month </div>
+                <div>Day </div> <div> Year </div>{" "}
               </div>
               <Divider variant="middle"></Divider>
               <div>
-                <Typography className="justifyCenter">Description </Typography>
+                <div className="justifyCenter">Description </div>
               </div>
             </div>
           </div>

@@ -42,3 +42,18 @@
   flex-grow: 1;
   border-width: 0.1px;
 }
+
+.custom-shape-divider-top {
+  width: 100%;
+  overflow: hidden;
+}
+
+.custom-shape-divider svg {
+  width: calc(200% + 1.3px);
+  height: 20px;
+}
+
+.custom-shape-divider .shape-fill {
+  fill: var(--color-base);
+}
+

@@ -87,9 +87,9 @@ export default function Carousels() {
           className="justifyCenter"
           sx={{
             "& .MuiAvatar-root ": {
-              width: 26,
-              height: 26,
-              fontSize: "80%",
+              width: 30,
+              height: 30,
+              fontSize: "70%",
               border: "1.5px solid var(--color-base)",
             },
             "& .MuiAvatar-colorDefault": {

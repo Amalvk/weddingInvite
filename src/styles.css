@@ -56,7 +56,7 @@ body {
 
 .justifyCenter{
   display: flex;
-  justify-content: center;
+  justify-content: center !important;
 }
 
 .displayBlock{

@@ -16,28 +16,6 @@ import { useState,useEffect } from "react";
 import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
 import { fetchData } from "../firebase/firebaseService";
 
-const steps = [
-  {
-    label: "Day 1",
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: "Day 2",
-
-    description:
-      "An ad group contains one or more ads which target a shared set of keywords.",
-  },
-  {
-    label: "Day 3",
-
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
 
 export default function Event() {
   
@@ -49,7 +27,6 @@ export default function Event() {
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
     fetchData(FIREBASE_COLLECTIONS.EVENT).then(setState).catch(console.error);
-  
   }, [])
 
   const handleNext = (event) => {
@@ -69,7 +46,7 @@ export default function Event() {
     setActiveStep(day);
   };
   return (
-    <Box sx={{ maxWidth: 400, mx: "2rem" }} className="event-text">
+    <Box sx={{ maxWidth: 400, mx: "2rem" }} className="event-text" >
       <Stepper nonLinear activeStep={activeStep} orientation="vertical">
         {state[0]?.["Eventdetails "].map((step, index) => {
           return (

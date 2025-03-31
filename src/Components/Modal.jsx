@@ -12,8 +12,9 @@ import {
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Cropper from "react-easy-crop";
 import TextField from "@mui/material/TextField";
-import {addDocument } from "../firebase/firebaseService";
+import { addDocument } from "../firebase/firebaseService";
 import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
+import Toastify from '../common/Toastify';
 
 export default function Modal({ loadData }) {
   const [open, setOpen] = useState(false);
@@ -22,11 +23,11 @@ export default function Modal({ loadData }) {
   const [name, setName] = useState("");
   const [wish, setWish] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [openToast, setOpenToast] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
   const [croppedImage, setCroppedImage] = useState(null);
-    
   const inpRef = useRef();
   const inputRef = useRef();
 
@@ -61,7 +62,6 @@ export default function Modal({ loadData }) {
         croppedAreaPixels.height
       );
 
-      // ✅ Convert cropped image to Base64
       const croppedImageUrl = canvas.toDataURL("image/jpeg");
       setCroppedImage(croppedImageUrl);
       setImageOpen(false);
@@ -81,7 +81,7 @@ export default function Modal({ loadData }) {
 
   const handleClickOpen = () => {
     setOpen(true);
-    inputRef?.current?.focus()
+    setTimeout(() => inputRef.current?.focus(), 100);
   };
 
   const handleClose = () => {
@@ -117,11 +117,11 @@ export default function Modal({ loadData }) {
       setWish("");
       setCroppedImage(null);
       loadData();
-      alert("Wish uploaded successfully!");
+      setOpenToast(true);
       setOpen(false);
     } catch (error) {
       console.error("Error uploading wish:", error.message);
-      alert("Error uploading wish. Please try again.");
+      setOpenToast(false);
     } finally {
       setUploading(false);
     }
@@ -133,6 +133,7 @@ export default function Modal({ loadData }) {
         variant="outlined"
         onClick={handleClickOpen}
         className="modalButton"
+        disabled={openToast}
       >
         Add wishes{" "}
         <AddCircleOutlineRoundedIcon
@@ -175,27 +176,6 @@ export default function Modal({ loadData }) {
               sx={{
                 display: "block",
                 lineHeight: "4rem",
-                "& .MuiInput-underline": {
-                  // borderBottom: "2px solid red", // Set the underline border color to red
-                },
-                "& .MuiInput-underline": {
-                  // borderBottom: "2px solid red", // Keep the underline red on hover
-                  color: "var(--text-color-primary)", // Set the text color to blue
-                },
-                "& .MuiInput-underline:after": {
-                  borderBottom: "2px solid var(--text-color-primary)", // Keep the underline red when focused
-                  // color: "var(--text-color-primary)", // Set the text color to blue
-                },
-                "& .MuiInputBase-input": {
-                  color: "var(--text-color-primary)", // Set the text color to blue
-                },
-                "& .MuiInputLabel-root": {
-                  color: "var(--text-color-secondary)",
-                  // color: "#675959", // Set label color to yellow
-                },
-                "& .Mui-focused": {
-                  color: "var(--text-color-secondary)",
-                },
               }}
             >
               <TextField
@@ -208,6 +188,10 @@ export default function Modal({ loadData }) {
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
+                sx={{
+                  "& label.Mui-focused": { color: "black" },
+                  "& .MuiInput-underline:after": { borderBottomColor: "black" },
+                }}
               />
 
               <TextField
@@ -218,6 +202,10 @@ export default function Modal({ loadData }) {
                 fullWidth
                 onChange={(e) => {
                   setWish(e.target.value);
+                }}
+                sx={{
+                  "& label.Mui-focused": { color: "black" }, // Label turns black on focus
+                  "& .MuiInput-underline:after": { borderBottomColor: "black" }, // Underline turns black on focus
                 }}
               />
             </Box>
@@ -299,6 +287,7 @@ export default function Modal({ loadData }) {
           </Button>
         </DialogActions>
       </Dialog>
+      {openToast !== null && <Toastify open={openToast} />}
     </React.Fragment>
   );
 }
