@@ -5,7 +5,7 @@ export default function Invitation() {
   return (
     <div className="invitation-component">
       <Grid container className="invitation-card">
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6} className="invite-head">
+        <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
           <div className="invite-head-image">
             <img className="invite-couple-image" src={Ghibili} />
           </div>
@@ -37,7 +37,7 @@ export default function Invitation() {
             </div>
           </div>
         </Grid>
-        <Grid item xs={12} sm={12} md={6} lg={6} xl={6} className="invite-body">
+        <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-body">
           <div className="justifyCenter">Head</div>
           <div className="family-details-head">
             <div className="family-details-groom">
