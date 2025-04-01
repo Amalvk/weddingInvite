@@ -43,8 +43,8 @@
   border-width: 0.1px;
 }
 
-.custom-shape-divider-top {
-  width: 100%;
+.custom-shape-divider {
+  max-width: 100%;
   overflow: hidden;
 }
 
