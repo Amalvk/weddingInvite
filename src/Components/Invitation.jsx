@@ -1,9 +1,25 @@
 import "./Invitation.css";
 import { Grid, Divider, div, Typography } from "@mui/material";
-import Ghibili from '../Assets/ghibiliAA.jpg'
+import Ghibili from '../Assets/ghibiliAA.jpg';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Fade from "react-reveal/Fade";
+import { useEffect } from "react";
+
 export default function Invitation() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 3000,
+      // once: false,
+    });
+    AOS.refresh();  // Refresh AOS animations
+  }, []);
+
+
   return (
-    <div className="invitation-component">
+    <Fade bottom duration={2000}>
+    <div data-aos="zoom-out-right" className="invitation-component">
       <Grid container className="invitation-card">
         <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
           <div className="invite-head-image">
@@ -64,5 +80,6 @@ export default function Invitation() {
         </Grid>
       </Grid>
     </div>
+    </Fade>
   );
 }
