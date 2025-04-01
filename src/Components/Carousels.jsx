@@ -2,12 +2,16 @@ import Carousel from "react-spring-3d-carousel";
 import React, { useState, useEffect, useMemo } from "react";
 import { config } from "react-spring";
 import Modal from "./Modal";
-import Test2 from "./Test2";
+import Wish from "./Wish";
 import { v4 as uuidv4 } from "uuid";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
 import { fetchData } from "../firebase/firebaseService";
+import CommonSkeleton from "../common/CommonSkeleton";
+import Zoom from 'react-reveal/Zoom';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Carousels() {
   const [goToSlide, setGoToSlide] = useState(null);
@@ -20,8 +24,12 @@ export default function Carousels() {
 
   useEffect(() => {
     loadData();
+    AOS.init({
+      duration: 3000,
+      // once: false,
+    });
+    AOS.refresh();
   }, []);
-
 
   // ✅ Memoized `slides` to prevent unnecessary re-renders
   const slides = useMemo(() => {
@@ -32,13 +40,13 @@ export default function Carousels() {
         key: uuidv4(),
         content: (
           <div onClick={() => handleSlideClick(index)}>
-            <Test2
-              wish={item }
+            <Wish
+              wish={item}
               // name={item.name}
               // avatar={item.avatar}
               // message={item.wish}
               // color={item.color}
-              
+
               randomColor={randomColor} // Pass the unique color to Test2
             />
           </div>
@@ -65,7 +73,7 @@ export default function Carousels() {
 
   return (
     <div>
-      <div
+      {text.length > 0 ? <Zoom><div data-aos="zoom-in"
         style={{
           width: "30%",
           paddingBlock: "5.5rem 5rem",
@@ -80,10 +88,11 @@ export default function Carousels() {
           goToSlideDelay={2000}
           animationConfig={config.gentle}
         />
-      </div>
+      </div> </Zoom>: <div  style={{margin:'2rem',placeItems:'center'}}><CommonSkeleton animation="wave" variant="rounded" width={230} height={80} /></div>
+      }
       <div className="displayBlock">
         <AvatarGroup
-          max={4}
+          max={5}
           className="justifyCenter"
           sx={{
             "& .MuiAvatar-root ": {
@@ -98,9 +107,23 @@ export default function Carousels() {
             },
           }}
         >
-          {text.map((item) => (
-            <Avatar key={item.id} alt={item.name} src="/static/images/avatar/1.jpg" />
-          ))}
+          {text.length > 0 ? (
+            text.map((item) => (
+              <Zoom><Avatar style={{margin:'-2px'}} key={item.id} alt={item.name} src="/static/images/avatar/1.jpg" /></Zoom>
+            ))
+          ) : (
+            // Render Skeleton avatars as placeholders
+            Array.from({ length: 5 }).map((_, index) => (
+              <CommonSkeleton
+                key={index}
+                animation="wave"
+                variant="circular"
+                width={35}
+                height={35}
+                style={{margin:'-2px'}}
+              />
+            ))
+          )}
         </AvatarGroup>
         <div>
           <Modal loadData={loadData} />

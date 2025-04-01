@@ -5,7 +5,6 @@ import Invitation from "./Components/Invitation";
 import OpenInvite from "./Components/OpenInvite";
 import CountDown from "./Components/CountDown";
 import Location from "./Components/Location";
-import Wishes from "./Components/Wishes";
 import Sidebar from "./Components/Sidebar";
 import Carousels from "./Components/Carousels";
 import Popper from "./Components/Popper";
