@@ -105,7 +105,7 @@ export default function Modal({ loadData }) {
     const newWish = {
       name,
       wish,
-      avatar: name.charAt(0),
+      avatar: name.charAt(0).toUpperCase(),
       time: formattedDate,
       image: croppedImage || "", // ✅ Store Base64 image
       like: 1,

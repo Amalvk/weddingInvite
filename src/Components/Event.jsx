@@ -12,18 +12,18 @@ import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
 import { fetchData } from "../firebase/firebaseService";
 
 
 export default function Event() {
-  
-  const[state,setState]=useState([])
-  
-  console.log("state",state[0]?.["Eventdetails "]);
-  
-  
+
+  const [state, setState] = useState([])
+
+  // console.log("state", state[0]?.["Eventdetails "]);
+
+
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
     fetchData(FIREBASE_COLLECTIONS.EVENT).then(setState).catch(console.error);
@@ -69,7 +69,14 @@ export default function Event() {
                   },
                 }}
               >
-                <div className="event-day">{step.day}</div>
+                <div
+                  className="eventProgram"
+                  style={{ fontFamily: "var(--font-family-Sofia)" }}
+                >
+                  {step.program}
+                </div>
+
+
               </StepLabel>
               <StepContent
                 sx={{
@@ -77,13 +84,8 @@ export default function Event() {
                   textAlign: "left",
                 }}
               >
-              <div
-                  className="eventProgram"
-                  style={{ fontFamily: "var(--font-family-Sofia)" }}
-                >
-                  {step.program}
-                </div>
 
+                <div className="event-day">{step.day}</div>
                 <div
                   className="eventDescription"
                   style={{ fontFamily: "var(--font-family-Sofia)" }}

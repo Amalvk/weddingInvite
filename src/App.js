@@ -10,13 +10,17 @@ import Carousels from "./Components/Carousels";
 import Popper from "./Components/Popper";
 import Event from "./Components/Event";
 import Footer from "./Components/Footer";
+import BackgroundImage from "./Components/BackgroundImage";
+import Ghibili from './Assets/ghibiliAA.jpg';
 
 // import Navbar from "./Components/Navbar";
 export default function App() {
   const [open, setOpen] = useState(false);
-  const openCard = () => {
+  const [weddingInfo, setWeddingInfo] = useState();
+  const openCard = (info) => {
     setOpen((prevState) => !prevState);
     // setTimeout(() => setIsExploding(false), 2000);
+    setWeddingInfo(info)
   };
   return (
     <div className="App">
@@ -62,27 +66,27 @@ export default function App() {
               alt="No Img"
             />
           </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div id="carousels">
+              <Carousels />
+            </div>
+            <div id="events">
+              <Event />
+            </div>
 
-          <div id="carousels">
-            <Carousels />
-          </div>
-          <div id="events">
-            <Event />
-          </div>
+            <div id="invitation">
+              <Invitation {...weddingInfo} />
+            </div>
 
-          <div id="invitation">
-            <Invitation />
-          </div>
-
-          {/* <div id="wishes">
-            <Wishes />
-          </div>
-          */}
-          <div id="location">
-            <Location />
-          </div>
-          <div id="footer">
-            <Footer />
+            <div >
+              <BackgroundImage image={Ghibili} />
+            </div>
+            <div id="location">
+              <Location />
+            </div>
+            <div id="footer">
+              <Footer />
+            </div>
           </div>
         </div>
       ) : (

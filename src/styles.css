@@ -6,20 +6,20 @@
   /* --text-color-warm:rgba(159,46,46,1) ; 
   --text-color-disabled: rgba(250,250,250,1);  */
 
-    /* --background-warm: rgba(135,3,3,1);
+  /* --background-warm: rgba(135,3,3,1);
   --background-cherry : rgb(214, 70, 70);
   --background-secondary: rgb(232, 149, 149);
   --background-primary: #dfd2d2; */
-  --color-black:#000;
-  --color-offwhite:#f4eded;
-  --color-primary : rgba(98,0,0,1);
-  --color-secondary : rgba(135,3,3,1);
-  --color-warm: rgba(159,46,46,1);
-  --color-medium: rgba(192,47,47,1);
-  --color-cherry : rgb(214, 70, 70);
-  --color-light : rgb(233, 176, 176); 
+  --color-black: #000;
+  --color-offwhite: #f4eded;
+  --color-primary: rgba(98, 0, 0, 1);
+  --color-secondary: rgba(135, 3, 3, 1);
+  --color-warm: rgba(159, 46, 46, 1);
+  --color-medium: rgba(192, 47, 47, 1);
+  --color-cherry: rgb(214, 70, 70);
+  --color-light: rgb(233, 176, 176);
   --color-base: rgb(241, 217, 217);
-  --color-disabled: rgba(250,250,250,1);
+  --color-disabled: rgba(250, 250, 250, 1);
 
   --wish-box-shadow: #e1bee7;
 
@@ -30,9 +30,8 @@
   --font-family-cursive: cursive;
   --font-family-serif: serif;
   --font-family-rocknroll: "RocknRoll One", serif;
-  --font-family-Sofia:  "Sofia", cursive;
+  --font-family-Sofia: "Sofia", cursive;
   --font-family-Kurale: "Kurale", serif;
-  
 }
 
 body {
@@ -49,24 +48,25 @@ body {
   font-family: sans-serif;
   text-align: center;
   cursor: pointer;
+
   /* margin-block: 5rem; */
 }
 
 /*Common*/
 
-.justifyCenter{
+.justifyCenter {
   display: flex;
   justify-content: center !important;
 }
 
-.displayBlock{
+.displayBlock {
   display: flex;
   text-align: center;
 }
 
-.alignCenter{
+.alignCenter {
   align-self: center;
-  display: flex
+  display: flex;
 }
 
 .dotted-line {
@@ -82,9 +82,9 @@ body {
 /* Count Down */
 
 .countdown {
-        display: "flex";
-        justify-content: "center";
-        padding-top: "3rem";
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
 }
 
 /* navbar */

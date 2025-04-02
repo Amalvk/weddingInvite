@@ -35,9 +35,10 @@
 .invite-couple-image{
   max-width: 50%;
   max-height: 60%;
-
 }
-
+.timeDescription{
+  font-size: .6rem;
+}
 .family-details-head {
   display: flex;
   justify-content: center;
