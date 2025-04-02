@@ -18,7 +18,7 @@ import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import ViewDayOutlinedIcon from "@mui/icons-material/ViewDayOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
-export default function Sidebar() {
+export default function Sidebar({bride,groom}) {
   const [openMenu, setOpenMenu] = useState(false);
   const menuOptions = [
     {
@@ -45,7 +45,7 @@ export default function Sidebar() {
 
   return (
     <nav>
-      <div className="nav-logo-container">Image</div>
+      
       <div className="navbar-links-container">
         <Link to="events" smooth={true}>
           Events
@@ -72,12 +72,12 @@ export default function Sidebar() {
         >
           <List>
             <Box className="sidebarHeadName">
-              अमल{" "}
+              {groom.nameHindi}{" "}
               <FavoriteBorderOutlinedIcon
                 sx={{ color: "var( --text-color-primary)" }}
                 fontSize="small"
               />
-              ऐश्वर्या
+              {bride.nameHindi}
             </Box>
             <Divider />
 

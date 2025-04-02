@@ -34,39 +34,40 @@ export default function App() {
             zIndex: "1",
           }}
         >
-          <Sidebar />
-          {/* <Header /> */}
-          <div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div className="mainHeadComponent">
+              <img className='headImage' src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
+              <div className="sidebarComponent"><Sidebar {...weddingInfo} /></div>
+            </div>
+            {/* <Header /> */}
+            <div style={{ display: "flex", justifyContent: "center", zIndex: 1, position: 'absolute' }}>
               {<Popper />}
             </div>
             <div className="countdown">
-              <CountDown date={weddingInfo.date}/>
+              <CountDown date={weddingInfo.date} />
             </div>
-          </div>
-          <div style={{ position: "absolute", top: "18rem" }}>
-            <img
-              style={{ width: 50, height: 50, borderRadius: 0 }}
-              src={"https://picsum.photos/seed/picsum/200/300"}
-              alt="No Img"
-            />
-          </div>
-          <div
-            style={{
-              position: "absolute",
-              right: "0rem",
-              textAlign: "right",
-              top: "18rem",
-              zIndex: "1",
-            }}
-          >
-            <img
-              style={{ width: 50, height: 50, borderRadius: 0 }}
-              src={"https://picsum.photos/seed/picsum/200/300"}
-              alt="No Img"
-            />
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div style={{ position: "absolute", top: "18rem" }}>
+              <img
+                style={{ width: 50, height: 50, borderRadius: 0 }}
+                src={"https://picsum.photos/seed/picsum/200/300"}
+                alt="No Img"
+              />
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                right: "0rem",
+                textAlign: "right",
+                top: "18rem",
+                zIndex: "1",
+              }}
+            >
+              <img
+                style={{ width: 50, height: 50, borderRadius: 0 }}
+                src={"https://picsum.photos/seed/picsum/200/300"}
+                alt="No Img"
+              />
+            </div>
             <div id="carousels">
               <Carousels />
             </div>

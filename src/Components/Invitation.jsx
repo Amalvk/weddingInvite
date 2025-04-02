@@ -24,7 +24,7 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
         <Grid container className="invitation-card">
           <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
             <div className="invite-head-image">
-              <img className="invite-couple-image" alt="img" />
+              <img className="invite-couple-image" src ={Ghibili} alt="img" />
             </div>
             <div className="justifyCenter">
               <div>{groom.name}</div>

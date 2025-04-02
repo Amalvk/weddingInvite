@@ -28,16 +28,7 @@
   filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
 }
 
-img {
-  width: 100%;
-  height: -webkit-fill-available;
-  display: block;
-  margin: auto;
-  border-radius: 10px;
-  /* padding: 6px; */
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
+
 
 .content {
   padding-bottom: 1rem;
@@ -64,8 +55,16 @@ img {
 }
 .pairName {
   font-family: "RocknRoll One", sans-serif;
-  font-size: 13px;
-  color: white !important;
+  font-size: 15px;
+  color: white ;
+  font-family: var(--font-family-Kurale) !important;
+  font-weight: 500;
+  font-style: normal;
+  text-shadow: 2.5px 0px 2px rgba(128, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
 }
 
 .dateText {
@@ -79,8 +78,7 @@ img {
   color: white;
 }
 
-.buttonContainer {
-  padding-block: 2.5rem 2.5rem;
+.borderLine {
   border-bottom: 2px solid; /* Set the thickness and solid style */
   border-image: linear-gradient(
       to right,
@@ -90,6 +88,7 @@ img {
     )
     1; /* Gradient from black to orange to black */
   border-image-slice: 1;
+  padding: 1rem;
 }
 
 .MuiButton-root.inviteButton {
