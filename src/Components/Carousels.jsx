@@ -9,7 +9,7 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import { FIREBASE_COLLECTIONS } from '../firebase/firebaseCollections'
 import { fetchData } from "../firebase/firebaseService";
 import CommonSkeleton from "../common/CommonSkeleton";
-import Zoom from 'react-reveal/Zoom';
+import {Zoom} from 'react-awesome-reveal';
 import AOS from "aos";
 import "aos/dist/aos.css";
 

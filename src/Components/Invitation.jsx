@@ -3,7 +3,7 @@ import { Grid, Divider, div, Typography } from "@mui/material";
 import Ghibili from '../Assets/ghibiliAA.jpg';
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Fade from "react-reveal/Fade";
+import {Fade} from "react-awesome-reveal";
 import { useEffect, useState } from "react";
 
 export default function Invitation({ bride, groom, dateInfo, description }) {
