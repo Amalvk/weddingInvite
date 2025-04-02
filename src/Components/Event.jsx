@@ -15,18 +15,18 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { useState, useEffect } from "react";
 import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
 import { fetchData } from "../firebase/firebaseService";
+import CommonSkeleton from "../common/CommonSkeleton";
 
 
 export default function Event() {
 
-  const [state, setState] = useState([])
+  const [event, setEvent] = useState([])
 
-  // console.log("state", state[0]?.["Eventdetails "]);
 
 
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
-    fetchData(FIREBASE_COLLECTIONS.EVENT).then(setState).catch(console.error);
+    fetchData(FIREBASE_COLLECTIONS.EVENT).then(setEvent).catch(console.error);
   }, [])
 
   const handleNext = (event) => {
@@ -47,8 +47,8 @@ export default function Event() {
   };
   return (
     <Box sx={{ maxWidth: 400, mx: "2rem" }} className="event-text" >
-      <Stepper nonLinear activeStep={activeStep} orientation="vertical">
-        {state[0]?.["Eventdetails "].map((step, index) => {
+      {event.length > 0 ? <Stepper nonLinear activeStep={activeStep} orientation="vertical">
+        {event.map((step, index) => {
           return (
             <Step
               key={step.label}
@@ -127,7 +127,15 @@ export default function Event() {
             </Step>
           );
         })}
-      </Stepper>
+      </Stepper> : <div >
+        <div className="inviteCardSkelton">
+          <CommonSkeleton animation="wave" variant="circular" width={40} height={40} />
+          <CommonSkeleton animation="wave" variant="rounded" width={350} height={150} />
+          <CommonSkeleton animation="wave" variant="circular" width={40} height={40} />
+          <CommonSkeleton animation="wave" variant="rounded" width={350} height={100} />
+        </div>
+
+      </div>}
 
       {/* {activeStep === steps.length && (
         <Paper square elevation={0} sx={{ p: 3 }}>

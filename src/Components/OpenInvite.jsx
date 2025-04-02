@@ -47,9 +47,9 @@ function OpenInvite(prop) {
         </div>)
       })}
       </div> : <div className="inviteCardSkelton">
-        <CommonSkeleton animation="wave" variant="rounded" width={300} height={200} />
-        <CommonSkeleton animation="wave" variant="rounded" width={300} height={200} />
-      </div>}
+      <CommonSkeleton animation="wave" variant="rounded" width={300} height={200} />
+      <CommonSkeleton animation="wave" variant="rounded" width={300} height={200} />
+    </div>}
     </div>
   );
 }

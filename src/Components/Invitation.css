@@ -4,7 +4,7 @@
   padding: 2rem;
   display: flex;
   justify-content: center;
-  font-size: .8rem;
+  font-size: .5rem;
 
 }
 
@@ -37,12 +37,12 @@
   max-height: 60%;
 }
 .timeDescription{
-  font-size: .6rem;
+  font-size: .45rem;
 }
 .family-details-head {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: .6rem;
 }
 
 .family-details-groom {

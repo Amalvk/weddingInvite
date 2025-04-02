@@ -41,7 +41,7 @@ export default function App() {
               {<Popper />}
             </div>
             <div className="countdown">
-              <CountDown />
+              <CountDown date={weddingInfo.date}/>
             </div>
           </div>
           <div style={{ position: "absolute", top: "18rem" }}>

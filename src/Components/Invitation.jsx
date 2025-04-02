@@ -24,7 +24,7 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
         <Grid container className="invitation-card">
           <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
             <div className="invite-head-image">
-              <img className="invite-couple-image" src={Ghibili} />
+              <img className="invite-couple-image" alt="img" />
             </div>
             <div className="justifyCenter">
               <div>{groom.name}</div>
@@ -39,7 +39,7 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
                   style={{
                     display: "flex",
                     justifyContent: "space-evenly",
-                    maxWidth: "12rem",
+                    maxWidth: "6rem",
                     margin: "auto",
                   }}
                 >
@@ -55,19 +55,20 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
             </div>
           </Grid>
           <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-body">
-            <div className="justifyCenter">Head</div>
+            <div className="justifyCenter">
+              വിവാഹ ക്ഷണപത്രം</div>
             <div className="family-details-head">
               <div className="family-details-groom">
-                <div>G: </div>
+                <div>വരൻ</div>
                 <div>{groom.name}</div>
                 <div>S/o {groom.fatherName}</div>
-                <div>G Address</div>
+                <div>{groom.address}</div>
               </div>
               <div className="family-details-bride">
-                <div>B: </div>
-                <div>{groom.name}</div>
+                <div>വധു</div>
+                <div>{bride.name}</div>
                 <div>D/o {bride.fatherName}</div>
-                <div>G Address</div>
+                <div>{bride.address}</div>
               </div>
             </div>
             <div className="displayBlock">
