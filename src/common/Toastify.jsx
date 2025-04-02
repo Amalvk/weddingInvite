@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 export default function Toastify({ open }) {
   useEffect(() => {
     if (open !== null) {
-      toast[open ? "success" : "error"](open ? "This is a success toast! 🎉" : "Error Message! ❌", {
+      toast[open ? "success" : "error"](open ? "Your wish updated successfully 🎉" : "Can't able to upload now! ❌", {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,

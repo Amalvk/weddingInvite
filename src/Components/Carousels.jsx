@@ -110,7 +110,7 @@ export default function Carousels() {
         >
           {text.length > 0 ? (
             text.map((item) => (
-              <Zoom><Avatar style={{margin:'-2px'}} key={item.id} alt={item.name} src="/static/images/avatar/1.jpg" /></Zoom>
+              <Zoom><Avatar style={{margin:'-2px'}} key={item.id} alt={item.avatar} src="/static/images/avatar/1.jpg" /></Zoom>
             ))
           ) : (
             // Render Skeleton avatars as placeholders
