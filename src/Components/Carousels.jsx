@@ -73,7 +73,7 @@ export default function Carousels() {
 
   return (
     <div>
-      {text.length < 0 ? <Zoom><div data-aos="zoom-in"
+      {text.length > 0 ? <Zoom><div data-aos="zoom-in"
         style={{
           width: "30%",
           paddingBlock: "5.5rem 5rem",

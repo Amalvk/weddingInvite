@@ -34,7 +34,7 @@ export default function App() {
             zIndex: "1",
           }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8rem' }}>
             <div className="mainHeadComponent">
               <img className='headImage' src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
               <div className="sidebarComponent"><Sidebar {...weddingInfo} /></div>
