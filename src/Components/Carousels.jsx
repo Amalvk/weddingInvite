@@ -88,13 +88,14 @@ export default function Carousels() {
           goToSlideDelay={2000}
           animationConfig={config.gentle}
         />
-      </div> </Zoom>: <div  style={{margin:'2rem',placeItems:'center'}}><CommonSkeleton animation="wave" variant="rounded" width={230} height={80} /></div>
+      </div> </Zoom>: <div className="justifyCenter"  style={{margin:'2rem'}}><CommonSkeleton animation="wave" variant="rounded" width={230} height={80} /></div>
       }
       <div className="displayBlock">
         <AvatarGroup
           max={5}
           className="justifyCenter"
           sx={{
+            alignItems:'center',
             "& .MuiAvatar-root ": {
               width: 30,
               height: 30,
