@@ -45,9 +45,17 @@
   }
 }
 
+.locationHeadName{
+  align-items: center;
+}
 
 .eventLocationText {
   color: var(--color-primary);
+}
+
+.eventLocationDay{
+  font-size: .6rem;
+  margin-top: .5rem;
 }
 .addressText {
   color: var(--color-warm);

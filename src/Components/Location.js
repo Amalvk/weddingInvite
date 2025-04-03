@@ -1,61 +1,45 @@
 import "./Location.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Typography, Divider } from "@mui/material";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import NavigationOutlinedIcon from "@mui/icons-material/NavigationOutlined";
 import MovingOutlinedIcon from "@mui/icons-material/MovingOutlined";
+import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
+import { fetchData } from "../firebase/firebaseService";
 
 export default function RedirectMap() {
-  // const address = {
-  //   AddressLine1: "Sargalaya Arts & Craft village",
-  //   AddressLine2: "Oilmill-Kottakkal Road",
-  //   AddressLine3: "Vatakara",
-  // };
-  const eventDetails = [
-    {
-      type: "Wedding",
-      AddressLine1: "Sargalaya Arts & Craft village",
-      AddressLine2: "Oilmill-Kottakkal Road",
-      AddressLine3: "Vatakara",
-      location: `https://maps.app.goo.gl/3Z7kbrGVz26TXXVG8`,
-    },
-    {
-      type: "Reception",
-      AddressLine1: "Sargalaya Arts & Craft village",
-      AddressLine2: "Oilmill-Kottakkal Road",
-      AddressLine3: "Vatakara",
-      location: `https://maps.app.goo.gl/3Z7kbrGVz26TXXVG8`,
-    },
-  ];
-  const handleRedirect = (location) => {
-    const souparnika = `https://maps.app.goo.gl/kZX7ATcatcoP9dnG6`;
-    const url = `https://maps.app.goo.gl/3Z7kbrGVz26TXXVG8`;
+  const [location, setLocation] = useState([])
 
-    window.open(url, "_blank"); // Opens in a new tab
+  useEffect(() => {
+    fetchData(FIREBASE_COLLECTIONS.EVENT).then(setLocation).catch(console.error);
+  }, [])
+  const handleRedirect = (location) => {
+    window.open(location, "_blank"); // Opens in a new tab
   };
 
   return (
     <div className='locationContainer'>
-      <div className="justifyCenter ">Location Details</div>
+      <div className="justifyCenter locationHeadName">Location Details <LocationOnIcon sx={{ fontSize: "medium" }} />{" "}</div>
 
-      {eventDetails.map((place, index) => {
+      {location.map((event, index) => {
         return (
           <div key={index} className={index % 2 === 0 ? "moving-container locationCard" : "moving-DownUp locationCard"}>
             <div className="eventLocationText">
-              {place.type} <LocationOnIcon sx={{ fontSize: "medium" }} />{" "}
-            </div>
+              {event.program} 
+              </div>
+              <div className="eventLocationDay">{event.day}</div>
             <div className="dotted-line"></div>
             <div className="addressText">
-              <div>{place.AddressLine1}</div>
-              <div>{place.AddressLine2}</div>
-              <div>{place.AddressLine3}</div>
+              <div>{event.location.line1}</div>
+              <div>{event.location.line2 && event.location.line2}</div>
+              <div>{event.location.line3 && event.location.line3}</div>
             </div>
 
             <div>
               <Button
                 onClick={() => {
-                  handleRedirect(place.location);
+                  handleRedirect(event.link);
                 }}
                 variant="outlined"
                 className={"navigateButton"}

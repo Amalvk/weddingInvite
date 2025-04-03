@@ -23,8 +23,6 @@ export default function Event() {
 
   const [event, setEvent] = useState([])
 
-
-
   const [activeStep, setActiveStep] = useState(0);
   useEffect(() => {
     fetchData(FIREBASE_COLLECTIONS.EVENT).then(setEvent).catch(console.error);
