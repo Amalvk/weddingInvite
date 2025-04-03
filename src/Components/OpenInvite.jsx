@@ -27,7 +27,7 @@ function OpenInvite(prop) {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
-          <img className="commonImage" src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
+          <img src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
           <div className="content">
             <div className="pairName">{item.groom.nameEng}
               <FavoriteBorderOutlinedIcon

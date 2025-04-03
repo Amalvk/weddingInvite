@@ -21,9 +21,9 @@ export default function Footer() {
           <div className="footerName">Amal | Akshay | Madhanan | Shyni</div>
 
           <Divider className="footerDivider" />
-        </Box>
-        <div className="footerName">Team Voyals</div>
-        <img className="footerSvg" src={FooterFlower} />
+          </Box>
+          <div className="footerName">Team Voyals</div>
+          <div className="footerSvg"  />
       </div>
     </div>
   );

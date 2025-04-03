@@ -54,29 +54,6 @@ img {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
-.headImage{
-  border-radius: 0px;
-  opacity: 1;
-  z-index: 0;
-}
-
-.mainHeadComponent{
-  justify-content: center;
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.sidebarComponent {
-  width: 100%;
-  height: -webkit-fill-available;
-  top: 0rem;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  transition: 0.8s;
-  text-align: right !important;
-  align-items: flex-end; 
-}
 
 
 .App {

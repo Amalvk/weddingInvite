@@ -13,7 +13,7 @@
 }
 
 .footerContent {
-  padding-block: 1rem;
+  padding-top: 1rem;
   flex-direction: column;
 }
 .thankYou {
@@ -44,8 +44,14 @@
 }
 
 .footerSvg{
-  /* width: 100%;
-  height: 100px;  */
+  position: relative;
+  height: 96px;
+  width: 100%;
+  background-image: url(../Assets/FooterFlower.svg);
+  background-repeat: no-repeat;
+  opacity: 0.89;
+  background-size: auto 100%; /* Ensures full height */
+  background-position: center; /* Centers image */
 }
 
 /* .custom-shape-divider {

@@ -1,26 +1,14 @@
 import "./Invitation.css";
 import { Grid, Divider, div, Typography } from "@mui/material";
 import Ghibili from '../Assets/ghibiliAA.jpg';
-import AOS from "aos";
-import "aos/dist/aos.css";
 import {Fade} from "react-awesome-reveal";
 import { useEffect, useState } from "react";
 
 export default function Invitation({ bride, groom, dateInfo, description }) {
 
-
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
-      // once: false,
-    });
-    AOS.refresh();  // Refresh AOS animations
-  }, []);
-
-
   return (
     <Fade left duration={1000}>
-      <div data-aos="zoom-out" className="invitation-component">
+      <div className="invitation-component">
         <Grid container className="invitation-card">
           <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
             <div className="invite-head-image">

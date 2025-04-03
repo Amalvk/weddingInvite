@@ -1,16 +1,75 @@
-.header-container {
-  display: flex;
-  align-items: center;
-  color: var(--color-primary);
-  /* background: rgb(46, 43, 45); */
-  height: 2rem;
-  position: fixed;
-  width: -webkit-fill-available;
-  z-index: 1;
+.headImage {
+  border-radius: 0px;
+  opacity: 1;
+  z-index: 0;
 }
 
-.header-element {
+.mainHeadComponent {
+  justify-content: center;
+  position: relative;
+  margin-bottom: 2rem;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.sidebarComponent {
+  width: 100%;
+  height: -webkit-fill-available;
+  top: 0rem;
+  position: absolute;
   display: flex;
-  justify-content: space-evenly;
-  width: -webkit-fill-available;
+  z-index: 2;
+  flex-direction: column;
+  transition: 0.8s;
+  text-align: right !important;
+  align-items: flex-end;
+}
+
+.imageHeadName {
+  width: 100%;
+  height: -webkit-fill-available;
+  top: 0rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  transition: 0.8s;
+  /* text-align: center !important; */
+  align-items: center;
+  /* align-self: center; */
+  justify-content: center;
+}
+.borderSvg {
+  display: flex;
+  width: 20%;
+  height: 8%;
+  background-image: url("../Assets/Border.svg");
+  background-repeat: no-repeat; /* Prevents tiling */
+}
+
+.inverse {
+  transform: scaleY(-1);
+  -webkit-transform: scaleY(-1);
+}
+
+.headImageName {
+  font-family: var(--font-family-Sofia) !important;
+  align-items: center;
+  display: flex;
+  justify-content: center !important;
+  gap: 0.6rem;
+  width: 60%;
+  font-size: 2rem;
+  text-shadow: 2.5px 0px 2px rgba(128, 0, 0, 0.3);
+}
+
+.headImageName * {
+  font-family: inherit !important;
+}
+.nameLeft {
+  text-align: right;
+  width: 50%;
+}
+
+.nameRight {
+  text-align: left;
+  width: 50%;
 }
