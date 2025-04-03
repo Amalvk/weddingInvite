@@ -17,14 +17,14 @@ function Header(weddingInfo) {
                         <div className="borderSvg" />
 
                         <div className="headImageName" >
-                            <div className="borderSvg" />
+                           {/* <div className="borderSvg" /> */}
                             <Fade direction="left" duration={2000} >
                                 <div className="nameLeft"><div>{weddingInfo.groom.nameEng}</div></div>
                             </Fade>
                             <Zoom><FavoriteBorderIcon /></Zoom>
                             <div className="nameRight"><Fade direction="right" duration={2000} > <div>{weddingInfo.bride.nickName || weddingInfo.bride.nameEng}</div></Fade></div>
                         </div>
-                        <div className="borderSvg inverse" />
+                        {/* <div className="borderSvg inverse" /> */}
                     </div>
                 </div>
             </Fade>
