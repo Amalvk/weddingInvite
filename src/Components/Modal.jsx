@@ -200,6 +200,9 @@ export default function Modal({ loadData }) {
                 label="Wish"
                 variant="standard"
                 fullWidth
+                error={wish.length > 99} // Error state when exceeding 100 chars
+                helperText={wish.length > 99 ? "Maximum 100 characters allowed" : ""} // Show error message
+                inputProps={{ maxLength: 100 }} // Restrict input length to 100
                 onChange={(e) => {
                   setWish(e.target.value);
                 }}

@@ -7,6 +7,7 @@ import { fetchData } from "../firebase/firebaseService";
 import CommonSkeleton from "../common/CommonSkeleton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { Zoom } from 'react-awesome-reveal';
+import images from "../Assets/images"; // Import images
 
 function OpenInvite(prop) {
 
@@ -19,7 +20,7 @@ function OpenInvite(prop) {
   return (
     <div className="inviteCard">
       <div className="inviteTitle borderLine">Invitation Card</div>
-      {details.length > 0 ? <div>{details.map((item) => {
+      {details.length > 0 ? <div>{details.map((item,index) => {
         return (<Zoom><div className="inviteCardSkelton"><div
           className="image"
           onClick={() => {
@@ -27,7 +28,7 @@ function OpenInvite(prop) {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
-          <img src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
+          <img src={images.couples[index].image} />
           <div className="content">
             <div className="pairName">{item.groom.nameEng}
               <FavoriteBorderOutlinedIcon
