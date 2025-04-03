@@ -14,8 +14,6 @@ function Header(weddingInfo) {
 
                     <div className="sidebarComponent"><Sidebar {...weddingInfo} /></div>
                     <div className="imageHeadName">
-                        <div className="borderSvg" />
-
                         <div className="headImageName" >
                            {/* <div className="borderSvg" /> */}
                             <Fade direction="left" duration={2000} >
