@@ -22,7 +22,7 @@ function Header(weddingInfo) {
                             <Zoom><FavoriteBorderIcon /></Zoom>
                             <div className="nameRight"><Fade direction="right" duration={2000} > <div>{weddingInfo.bride.nickName || weddingInfo.bride.nameEng}</div></Fade></div>
                         </div>
-                        {/* <div className="borderSvg inverse" /> */}
+                     <div className="borderSvg inverse" /> 
                     </div>
                 </div>
             </Fade>
