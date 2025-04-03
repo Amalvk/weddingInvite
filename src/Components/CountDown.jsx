@@ -1,11 +1,12 @@
 import React from "react";
 import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
+import { Zoom } from 'react-awesome-reveal';
 
 export default function CountDown({date}) {
   const targetDate = new Date("2025-01-22T14:00:00");
   return (
-    <div>
+    <Zoom>
       <FlipClockCountdown
         to={date?date:targetDate}
         labels={["DAYS", "HOURS", "MINUTES", "SECONDS"]}
@@ -27,6 +28,6 @@ export default function CountDown({date}) {
         separatorStyle={{ color: "red", size: "none" }}
         duration={0.5}
       >Count Down</FlipClockCountdown>
-    </div>
+    </Zoom>
   );
 }

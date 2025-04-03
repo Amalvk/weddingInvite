@@ -12,6 +12,7 @@ import Event from "./Components/Event";
 import Footer from "./Components/Footer";
 import BackgroundImage from "./Components/BackgroundImage";
 import Ghibili from './Assets/ghibiliAA.jpg';
+import { Fade } from 'react-awesome-reveal';
 
 // import Navbar from "./Components/Navbar";
 export default function App() {
@@ -35,14 +36,15 @@ export default function App() {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8rem' }}>
-            <div className="mainHeadComponent">
+            <Fade direction="down" duration={1000} ><div className="mainHeadComponent">
               <img className='headImage' src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
               <div className="sidebarComponent"><Sidebar {...weddingInfo} /></div>
             </div>
+            </Fade>
             {/* <Header /> */}
-            <div style={{ display: "flex", justifyContent: "center", zIndex: 1, position: 'absolute' }}>
+            {/* <div style={{ display: "flex", justifyContent: "center", zIndex: 1, position: 'absolute' }}>
               {<Popper />}
-            </div>
+            </div> */}
             <div className="countdown">
               <CountDown date={weddingInfo.date} />
             </div>

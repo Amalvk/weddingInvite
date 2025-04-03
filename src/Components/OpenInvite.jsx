@@ -6,6 +6,7 @@ import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
 import { fetchData } from "../firebase/firebaseService";
 import CommonSkeleton from "../common/CommonSkeleton";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import { Zoom } from 'react-awesome-reveal';
 
 function OpenInvite(prop) {
 
@@ -19,10 +20,11 @@ function OpenInvite(prop) {
     <div className="inviteCard">
       <div className="inviteTitle borderLine">Invitation Card</div>
       {details.length > 0 ? <div>{details.map((item) => {
-        return (<div className="inviteCardSkelton"><div
+        return (<Zoom><div className="inviteCardSkelton"><div
           className="image"
           onClick={() => {
             prop.openCard(item);
+            window.scrollTo({ top: 0, behavior: "smooth" })
           }}
         >
           <img className="commonImage" src="https://fastly.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w" />
@@ -35,12 +37,11 @@ function OpenInvite(prop) {
               {item.bride.nameEng}
             </div>
             <div className="dateText">{item.day}</div>
-            
             <CountDown date={item.date} />
           </div>
         </div>
-           <div>
-{ /*         <Button
+          <div>
+            { /*         <Button
             onClick={() => {
               prop.openCard();
             }}
@@ -49,8 +50,9 @@ function OpenInvite(prop) {
           >
             Open Invitation
           </Button> */}
-        </div> 
-        </div>)
+          </div>
+        </div>
+        </Zoom>)
       })}
       </div> : <div className="inviteCardSkelton">
         <CommonSkeleton animation="wave" variant="rounded" width={300} height={200} />

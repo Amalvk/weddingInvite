@@ -16,6 +16,7 @@ import { useState, useEffect } from "react";
 import { FIREBASE_COLLECTIONS } from "../firebase/firebaseCollections";
 import { fetchData } from "../firebase/firebaseService";
 import CommonSkeleton from "../common/CommonSkeleton";
+import { Fade } from 'react-awesome-reveal';
 
 
 export default function Event() {
@@ -86,28 +87,30 @@ export default function Event() {
               >
 
                 <div className="event-day">{step.day}</div>
-                <div
+                <Fade direction="right" duration={2000}
                   className="eventDescription"
                   style={{ fontFamily: "var(--font-family-Sofia)" }}
                 >
                   {step.details}
-                </div>
+                </Fade>
                 <Box sx={{ mb: 0 }}>
                   <div>
                     {index < 2 && (
-                      <Button
+                     <Fade direction="up" duration={2000}> <Button
                         size="small"
                         onClick={handleNext}
                         sx={{
                           mt: 1,
                           mr: 1,
+                         minWidth:'auto',
                           color: "var(--color-primary)",
                         }}
                       >
                         {"Next"}
                         {/* {index === steps.length - 1 ? "Finish" : "Next"} */}
-                        <NavigateNextIcon />
+                        <NavigateNextIcon fontSize="small"/>
                       </Button>
+                      </Fade>
                     )}
                     {/* <Button
                       disabled={index === 0}
