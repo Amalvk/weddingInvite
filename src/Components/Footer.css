@@ -43,6 +43,11 @@
   border-width: 0.1px;
 }
 
+.footerSvg{
+  /* width: 100%;
+  height: 100px;  */
+}
+
 /* .custom-shape-divider {
   max-width: 100%;
   overflow: hidden;

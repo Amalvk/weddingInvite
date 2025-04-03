@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { Box, Divider, Typography } from "@mui/material";
+import FooterFlower from '../Assets/FooterFlower.svg'
 export default function Footer() {
   return (
     <div className="footerContainer custom-shape-divider">
@@ -21,7 +22,8 @@ export default function Footer() {
 
           <Divider className="footerDivider" />
         </Box>
-        <div className="footerName"> Voyals</div>
+        <div className="footerName">Team Voyals</div>
+        <img className="footerSvg" src={FooterFlower} />
       </div>
     </div>
   );

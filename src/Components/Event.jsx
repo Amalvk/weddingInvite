@@ -130,9 +130,9 @@ export default function Event() {
       </Stepper> : <div >
         <div className="inviteCardSkelton">
           <CommonSkeleton animation="wave" variant="circular" width={40} height={40} />
-          <CommonSkeleton animation="wave" variant="rounded" width={350} height={150} />
+          <CommonSkeleton animation="wave" variant="rounded" width={300} height={150} />
           <CommonSkeleton animation="wave" variant="circular" width={40} height={40} />
-          <CommonSkeleton animation="wave" variant="rounded" width={350} height={100} />
+          <CommonSkeleton animation="wave" variant="rounded" width={300} height={100} />
         </div>
 
       </div>}

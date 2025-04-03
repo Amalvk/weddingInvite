@@ -11,7 +11,7 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
 
   useEffect(() => {
     AOS.init({
-      duration: 3000,
+      duration: 2000,
       // once: false,
     });
     AOS.refresh();  // Refresh AOS animations
@@ -19,8 +19,8 @@ export default function Invitation({ bride, groom, dateInfo, description }) {
 
 
   return (
-    <Fade bottom duration={2000}>
-      <div data-aos="zoom-out-right" className="invitation-component">
+    <Fade left duration={1000}>
+      <div data-aos="zoom-out" className="invitation-component">
         <Grid container className="invitation-card">
           <Grid item xs={6} sm={6} md={6} lg={6} xl={6} className="invite-head">
             <div className="invite-head-image">
