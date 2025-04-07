@@ -38,7 +38,7 @@ function OpenInvite(prop) {
               {item.bride.nameEng}
             </div>
             <div className="dateText">{item.day}</div>
-            <CountDown date={item.date} />
+            <CountDown date={item.date} openInvite />
           </div>
         </div>
           <div>
