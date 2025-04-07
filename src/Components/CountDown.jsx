@@ -3,7 +3,7 @@ import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 import { Zoom } from 'react-awesome-reveal';
 
-export default function CountDown({date}) {
+export default function CountDown({date,openInvite = null}) {
   const targetDate = new Date("2025-01-22T14:00:00");
   return (
     <Zoom>
@@ -14,7 +14,7 @@ export default function CountDown({date}) {
           fontSize: 6,
           fontWeight: 600,
           textTransform: "uppercase",
-          color: "var(--color-cherry)",
+          color: openInvite ? "var(--color-offwhite)": "var(--color-cherry)",
         }}
         digitBlockStyle={{
           background: "white",
