@@ -38,7 +38,9 @@ function OpenInvite(prop) {
               {item.bride.nameEng}
             </div>
             <div className="dateText">{item.day}</div>
-            <CountDown date={item.date} openInvite />
+            <Zoom duration={1500} >
+              <CountDown date={item.date} openInvite />
+            </Zoom>
           </div>
         </div>
           <div>
