@@ -20,7 +20,7 @@ function OpenInvite(prop) {
   return (
     <div className="inviteCard">
       <div className="inviteTitle borderLine">Invitation Card</div>
-      {details.length > 0 ? <div>{details.map((item,index) => {
+      {details.length > 0 && images ? <div>{details.map((item,index) => {
         return (<Zoom><div className="inviteCardSkelton"><div
           className="image"
           onClick={() => {

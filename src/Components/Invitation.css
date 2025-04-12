@@ -28,7 +28,7 @@
 }
 .invite-couple-name {
   gap: 0.3rem;
-  place-self: center;
+  justify-items: center;
   position: relative;
 }
 
