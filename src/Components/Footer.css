@@ -48,7 +48,7 @@
   height: 96px;
   width: 100%;
   background-image: url(../Assets/FooterFlower.svg);
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   opacity: 0.89;
   background-size: auto 100%; /* Ensures full height */
   background-position: center; /* Centers image */

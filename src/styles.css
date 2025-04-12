@@ -27,13 +27,45 @@
   --font-family-system-ui: system-ui;
   --font-family-cursive: cursive;
   --font-family-monospace: monospace;
-  --font-family-cursive: cursive;
   --font-family-serif: serif;
   --font-family-rocknroll: "RocknRoll One", serif;
   --font-family-Sofia: "Sofia", cursive;
   --font-family-Kurale: "Kurale", serif;
+
+  --font-family-nupuram: 'Nupuram', sans-serif;
+  --font-family-dyuthi: 'Dyuthi', sans-serif;
+  --font-family-suruma: 'Suruma', sans-serif;
+  --font-family-raghu: 'RaghuMalayalamSans', sans-serif;
+  --font-family-rachana: 'Rachana', sans-serif;
+  --font-family-meera: 'Meera', sans-serif;
+  --font-family-chilanka: 'Chilanka', sans-serif;
+  --font-family-malini: 'Malini', sans-serif;
+  ;
 }
 
+.text-small {
+  font-size: 9px !important;
+}
+
+.text-medium {
+  font-size: 10px !important;
+}
+
+.text-large {
+  font-size: 12px !important;
+}
+
+.nupuram-font{
+  font-family: var(--font-family-nupuram) !important;
+}
+
+.rachana-font{
+  font-family: var(--font-family-rachana) !important;
+}
+
+.dyuthi-font{
+  font-family:var(--font-family-dyuthi)
+}
 body {
   /* background-image: linear-gradient(
     to bottom right,
@@ -72,7 +104,7 @@ img {
 }
 
 .displayBlock {
-  display: flex;
+  display: block;
   text-align: center;
 }
 
