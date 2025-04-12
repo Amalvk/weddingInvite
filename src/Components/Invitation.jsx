@@ -1,7 +1,6 @@
 import "./Invitation.css";
 import { Grid, Divider, div, Typography } from "@mui/material";
 import Ghibili from '../Assets/ghibiliAA.jpg';
-import sideFlower from '../Assets/sideFlower.png';
 import { Fade } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
 
