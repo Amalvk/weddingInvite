@@ -44,10 +44,6 @@ export default function App() {
               <CountDown date={weddingInfo.date} />
             </div>
               
-            <div >
-              <BackgroundImage image={Ghibili} />
-            </div>
-              
             <div style={{ position: "absolute", top: "18rem" }}>
               <img
                 style={{ width: 50, height: 50, borderRadius: 0 }}
@@ -79,6 +75,10 @@ export default function App() {
 
             <div id="invitation">
               <Invitation {...weddingInfo} />
+            </div>
+
+            <div >
+              <BackgroundImage image={Ghibili} />
             </div>
 
             <div id="location">
